@@ -39,7 +39,7 @@ const area=(key,label,placeholder="",note="")=>'<label class="field full"><span 
 const dropdown=(key,label,options)=>'<label class="field"><span class="field-label">'+label+'</span><select data-key="'+key+'">'+options.map(([v,t])=>'<option value="'+esc(v)+'" '+(state[key]===v?'selected':'')+'>'+esc(t)+'</option>').join("")+'</select></label>';
 const radios=(key,options)=>'<div class="brief-options">'+options.map(([v,t])=>'<label><input type="radio" name="'+key+'" data-key="'+key+'" value="'+v+'" '+(state[key]===v?'checked':'')+'> '+t+'</label>').join("")+'</div>';
 const block=(i,title,content)=>'<section class="brief-block" id="block-'+i+'"><div class="brief-head"><h2>'+String(i).padStart(2,"0")+'. '+title+'</h2>'+(i<state.opened?'<button class="btn ghost" type="button" onclick="jump('+i+')">Изменить</button>':'')+'</div>'+content+'</section>';
-const next=(i)=>'<div class="brief-actions"><button class="btn" onclick="reveal('+i+')">Продолжить брифинг ↓</button>'+(i===1?'<button class="btn secondary" onclick="reveal(3)">Посмотреть рекомендации</button>':'')+'<button class="btn ghost" onclick="reveal(5)">Сформировать итог</button></div>';
+const next=(i)=>'<div class="brief-actions"><button class="btn" onclick="reveal('+(i+1)+')">Продолжить брифинг ↓</button>'+(i===1?'<button class="btn secondary" onclick="reveal(3)">Посмотреть рекомендации</button>':'')+'<button class="btn ghost" onclick="reveal(5)">Сформировать итог</button></div>';
 function chooseGoal(g){state.goal=g;render()}
 function chooseExtra(g){state.secondary=g;render()}
 function changeAction(){const x=$("action-funnel");if(x)x.innerHTML=funnel()}
